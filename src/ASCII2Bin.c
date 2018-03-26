@@ -1,3 +1,17 @@
+/*
+ * Author:  Bibrak Qamar
+ * File:    ASCII2Bin.c
+ *
+ * Basic C code to read an ASCII graph file and 
+ * write the edges to a binay file
+ *
+*/
+
+/*
+ * compile: gcc ASCII2Bin.c
+ * run: ./a.out ./scale16_s.mm
+*/
+
 #include <stdio.h>
 int main(int argc, char* argv[]){
    
