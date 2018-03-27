@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 int main(int argc, char* argv[]){
    
   char *filename = argv[1];
@@ -38,12 +39,17 @@ int main(int argc, char* argv[]){
 
   FILE *f_wtr;
 
-  if((f_wtr = fopen("scale16_s.bin","wb")) == NULL)  // w for write, b for binary
+  char filename_w[256];
+  strcpy(filename_w, filename);
+  strcat(filename_w, ".bin");
+  if((f_wtr = fopen(filename_w,"wb")) == NULL)  // w for write, b for binary
     return -1;
 
 
 
-  int vert_from, vert_to, weight;
+
+  int vert_from, vert_to;
+  float weight;
   vert_from = -1;
   vert_to = -1;
   
@@ -51,7 +57,7 @@ int main(int argc, char* argv[]){
   //while((is_EOF = fscanf(f, "%d %d", &vert_from, &vert_to)) != EOF){
   for(int i=0; i< N_edges; i++){
     // printf("i = %d\n", i);
-    fscanf(f, "%d\t%d\t%d", &vert_from, &vert_to, &weight);
+    fscanf(f, "%d\t%d\t%f", &vert_from, &vert_to, &weight);
     if(is_zero_indexed){
       vert_from --; vert_to --;
     }
