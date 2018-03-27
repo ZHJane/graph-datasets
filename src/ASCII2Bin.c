@@ -13,11 +13,12 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 int main(int argc, char* argv[]){
    
   char *filename = argv[1];
   //printf("file is: %s\n", filename);
-
+  int is_zero_indexed = atoi(argv[2]);
 
   FILE *f = NULL;
 
@@ -51,6 +52,9 @@ int main(int argc, char* argv[]){
   for(int i=0; i< N_edges; i++){
     // printf("i = %d\n", i);
     fscanf(f, "%d\t%d\t%d", &vert_from, &vert_to, &weight);
+    if(is_zero_indexed){
+      vert_from --; vert_to --;
+    }
     //printf("read %d --> %d, w = %d\n", vert_from, vert_to, weight);
     //printf("%d\t%d\t%d\n", vert_from, vert_to, weight);
     fwrite(&vert_from, sizeof(vert_from), 1, f_wtr); 
